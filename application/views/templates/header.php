@@ -101,7 +101,7 @@
                 <li class="nav-item">
                   <a href="<?= base_url() ?>admin/dashboard" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Home</p>
+                    <p>Dashboard</p>
                   </a>
                 </li>
                 <li class="nav-item">
