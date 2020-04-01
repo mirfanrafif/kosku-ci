@@ -25,3 +25,5 @@
     </table>
   </div>
 </div>
+
+<a href="" class="btn btn-primary float-right">Tambah</a>

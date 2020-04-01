@@ -8,7 +8,7 @@ class anakkos_model extends CI_Model
 
   public function getAll()
   {
-    $this->db->select('nama, no_hp, status');
+    $this->db->select('id, nama, no_hp, status');
     $this->db->from('user');
     $this->db->where('level', 'user');
     return $this->db->get()->result_array();
@@ -20,6 +20,11 @@ class anakkos_model extends CI_Model
     $this->db->from('user');
     $this->db->where('level', 'user');
     return $this->db->get()->result_array();
+  }
+
+  public function save($data)
+  {
+    $this->db->insert('user', $data);
   }
 }
 

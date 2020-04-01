@@ -13,6 +13,7 @@
           <th>Nama</th>
           <th>No. HP</th>
           <th>Status</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -25,9 +26,18 @@
             <td><?= $anakkos['nama'] ?></td>
             <td><?= $anakkos['no_hp'] ?></td>
             <td><?= $anakkos['status'] ?></td>
+            <td>
+              <a href="<?= base_url() ?>admin/anakkos/edit/<?= $anakkos['id'] ?>" class="btn btn-warning btn-sm">
+                <i class="fa fa-edit"></i> Edit
+              </a>
+              <a href="<?= base_url() ?>admin/anakkos/hapus/<?= $anakkos['id'] ?>" class="btn btn-danger btn-sm">
+                <i class="fa fa-trash"></i> Hapus
+              </a>
+            </td>
           </tr>
         <?php endforeach ?>
       </tbody>
     </table>
   </div><!-- /.card-body -->
 </div>
+<a href="<?= base_url() ?>/admin/anakkos/tambah" class="btn btn-primary float-right">Tambah</a>
