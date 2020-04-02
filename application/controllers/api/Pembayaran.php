@@ -20,8 +20,18 @@ class Pembayaran extends REST_Controller
 
   public function index_get($id = 0)
   {
+    $month = $this->get('month');
+
     if ($id) {
       $data = $this->pembayaran_model->getById($id);
+      $this->response(
+        [
+          'data' => $data
+        ],
+        200
+      );
+    } elseif ($month) {
+      $data = $this->pembayaran_model->getByMonth($month);
       $this->response(
         [
           'data' => $data
@@ -37,6 +47,14 @@ class Pembayaran extends REST_Controller
         200
       );
     }
+  }
+
+  public function index_post()
+  {
+    $this->response([
+      'response' => 200,
+      'status' => 'ok'
+    ], 200);
   }
 }
 

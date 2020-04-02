@@ -24,6 +24,10 @@
 <script src="<?= base_url() ?>/assets/plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="<?= base_url() ?>/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+<script src="<?= base_url() ?>/assets/plugins/datatables/jquery.dataTables.js"></script>
+
+<script src="<?= base_url() ?>/assets/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button)
@@ -54,6 +58,52 @@
 <script src="<?= base_url() ?>/assets/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?= base_url() ?>/assets/dist/js/demo.js"></script>
+<script>
+  $('document').ready(function() {
+    var url = "http://localhost/kosku-ci/api/"
+    var bulan = new Date().getMonth() + 1;
+    console.log(bulan);
+    var table = $('#list_bulan_ini').DataTable({
+      "ajax": url + "pembayaran?month=" + bulan,
+      "columns": [{
+          "data": "nama"
+        },
+        {
+          "data": "tanggal"
+        },
+        {
+          "data": "nominal"
+        },
+      ],
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+    });
+
+    var table = $('#list_pembayaran').DataTable({
+      "ajax": url + "pembayaran",
+      "columns": [{
+          "data": "nama"
+        },
+        {
+          "data": "tanggal"
+        },
+        {
+          "data": "nominal"
+        },
+      ],
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+    });
+  })
+</script>
 </body>
 
 </html>
