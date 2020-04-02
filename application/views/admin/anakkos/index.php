@@ -27,10 +27,10 @@
             <td><?= $anakkos['no_hp'] ?></td>
             <td><?= $anakkos['status'] ?></td>
             <td>
-              <a href="<?= base_url() ?>admin/anakkos/edit/<?= $anakkos['id'] ?>" class="btn btn-warning btn-sm">
+              <a href="<?= base_url() ?>admin/anakkos/ubah/<?= $anakkos['username'] ?>" class="btn btn-warning btn-sm">
                 <i class="fa fa-edit"></i> Edit
               </a>
-              <a href="<?= base_url() ?>admin/anakkos/hapus/<?= $anakkos['id'] ?>" class="btn btn-danger btn-sm">
+              <a href="<?= base_url() ?>admin/anakkos/hapus/<?= $anakkos['username'] ?>" class="btn btn-danger btn-sm">
                 <i class="fa fa-trash"></i> Hapus
               </a>
             </td>

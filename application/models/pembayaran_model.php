@@ -6,13 +6,22 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Pembayaran_Model extends CI_Model
 {
 
-  public function getAll()
+  public function getCurrentMonth()
   {
     $this->db->select('*');
     $this->db->from('transaksi');
-    $this->db->join('user', 'transaksi.id_user = user.id', 'inner');
+    $this->db->join('user', 'transaksi.username = user.username', 'inner');
     $this->db->where('MONTH(transaksi.tanggal)', date('m'));
     return $this->db->get()->result_array();
+  }
+
+  public function getAll()
+  {
+    $this->db->select('*');
+    // $this->db->from('transaksi');
+    $this->db->join('user', 'transaksi.username = user.username', 'inner');
+    // $this->db->where('MONTH(transaksi.tanggal)', date('m'));
+    return $this->db->get('transaksi', 10, 0)->result_array();
   }
 }
 

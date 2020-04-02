@@ -45,6 +45,37 @@ class AnakKos extends CI_Controller
       $this->load->view('templates/footer');
     }
   }
+
+  public function ubah($username)
+  {
+    if ($this->input->post('submit')) {
+      $anakkos = array(
+        'nama' => $this->input->post('nama'),
+        'no_hp' => $this->input->post('nohp'),
+        'status' => $this->input->post('status'),
+        'username' => $this->input->post('username'),
+        'password' => md5($this->input->post('password')),
+        'id_kos' => $this->input->post('idkos'),
+        'level' => 'user'
+      );
+
+      $this->anakkos_model->update($anakkos, $username);
+
+      redirect('admin/anakkos');
+    } else {
+      $data['title'] = 'Tambah Data Anak Kos';
+      $data['kos'] = $this->anakkos_model->getById($username);
+      $this->load->view('templates/header', $data);
+      $this->load->view('admin/anakkos/ubah', $data);
+      $this->load->view('templates/footer');
+    }
+  }
+
+  public function hapus($username)
+  {
+    $this->anakkos_model->delete($username);
+    redirect('admin/anakkos', 'refresh');
+  }
 }
 
 /* End of file AnakKos.php */
