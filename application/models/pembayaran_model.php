@@ -21,7 +21,7 @@ class Pembayaran_Model extends CI_Model
     // $this->db->from('transaksi');
     $this->db->join('user', 'transaksi.username = user.username', 'inner');
     // $this->db->where('MONTH(transaksi.tanggal)', date('m'));
-    return $this->db->get('transaksi', 10, 0)->result_array();
+    return $this->db->get('transaksi')->result_array();
   }
 }
 
