@@ -28,6 +28,7 @@ class AnakKos extends CI_Controller
       $anakkos = array(
         'nama' => $this->input->post('nama'),
         'no_hp' => $this->input->post('nohp'),
+        'asal' => $this->input->post('asal'),
         'status' => $this->input->post('status'),
         'username' => $this->input->post('username'),
         'password' => md5($this->input->post('password')),

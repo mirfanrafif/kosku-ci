@@ -21,6 +21,17 @@ class Pembayaran extends CI_Controller
     $this->load->view('admin/pembayaran/index', $data);
     $this->load->view('templates/footer');
   }
+
+  public function tambah()
+  {
+    $this->load->model('anakkos_model');
+    $data['kos'] = $this->anakkos_model->getAll();
+    $data['title'] = 'Data Pembayaran Kos';
+
+    $this->load->view('templates/header', $data);
+    $this->load->view('admin/pembayaran/tambah', $data);
+    $this->load->view('templates/footer');
+  }
 }
 
 /* End of file Pembayaran.php */

@@ -51,6 +51,16 @@ class Pembayaran extends REST_Controller
 
   public function index_post()
   {
+    $data = array(
+      'username' => $this->post('username'),
+      'bulan' => $this->post('bulan'),
+      'tahun' => $this->post('tahun'),
+      'tanggal' => date('Y/m/d', time()),
+      'nominal' => $this->post('nominal'),
+    );
+
+    $this->pembayaran_model->save($data);
+
     $this->response([
       'response' => 200,
       'status' => 'ok'
