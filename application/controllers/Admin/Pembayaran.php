@@ -2,9 +2,12 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
+use GuzzleHttp\Client;
+
 class Pembayaran extends CI_Controller
 {
 
+  private $_client;
 
   public function __construct()
   {
@@ -16,7 +19,8 @@ class Pembayaran extends CI_Controller
   public function index()
   {
     $data['title'] = 'Data Pembayaran Kos';
-    $data['pembayaran'] = $this->pembayaran_model->getAll();
+    $month = date('M', time());
+    $data['list_bulan_ini'] = $this->pembayaran_model->getByMonth($month);
     $this->load->view('templates/header', $data);
     $this->load->view('admin/pembayaran/index', $data);
     $this->load->view('templates/footer');
@@ -24,13 +28,16 @@ class Pembayaran extends CI_Controller
 
   public function tambah()
   {
-    $this->load->model('anakkos_model');
-    $data['kos'] = $this->anakkos_model->getAll();
-    $data['title'] = 'Data Pembayaran Kos';
+    if ($this->input->post('submit')) {
+    } else {
+      $this->load->model('anakkos_model');
+      $data['kos'] = $this->anakkos_model->getAll();
+      $data['title'] = 'Data Pembayaran Kos';
 
-    $this->load->view('templates/header', $data);
-    $this->load->view('admin/pembayaran/tambah', $data);
-    $this->load->view('templates/footer');
+      $this->load->view('templates/header', $data);
+      $this->load->view('admin/pembayaran/tambah', $data);
+      $this->load->view('templates/footer');
+    }
   }
 }
 
